@@ -82,6 +82,9 @@ export function CinematicScroll() {
       },
     })
 
+    // Fade disclaimer out immediately on click
+    tl.to('.wrapper-disclaimer', { opacity: 0, duration: 0.12, ease: 'power2.in' }, 0)
+
     // Squeeze button in
     if (ctaBtnRef.current) {
       tl.to(ctaBtnRef.current, {
@@ -569,6 +572,10 @@ export function CinematicScroll() {
           >
             FEEL THE RUSH
           </button>
+
+          <p className="wrapper-disclaimer">
+            Made for fun, built as a social experiment. An independent creative project, not affiliated with or endorsed by Red Bull.
+          </p>
         </div>
       )}
 
