@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Red Bull — Energy Scroll Cinematic</title>
-    <!-- Preload wrapper, first frame, line artwork, and audio for instant rendering -->
-    <link rel="preload" as="image" href="/Desktop%20-%201.jpg" />
+    <!-- Preload wrapper (responsive for desktop and mobile), first frame, line artwork, and audio -->
+    <link rel="preload" as="image" href="/Desktop%20-%201.jpg" media="(min-width: 769px)" />
+    <link rel="preload" as="image" href="/iPhone%2017%20-%201.jpg" media="(max-width: 768px)" />
     <link rel="preload" as="image" href="/frames/frame_0001.jpg" />
     <link rel="preload" as="image" href="/line-1.png" />
     <link rel="preload" as="audio" href="/audio.mp3" />

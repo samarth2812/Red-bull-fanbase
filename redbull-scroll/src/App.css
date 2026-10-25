@@ -263,6 +263,14 @@
   transition: opacity 0.15s ease-out;
 }
 
+@media (max-width: 768px) {
+  .wrapper-overlay {
+    background-image: url('/iPhone 17 - 1.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
 .wrapper-overlay.ready {
   opacity: 1;
 }
@@ -290,7 +298,21 @@
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
   user-select: none;
   -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  max-width: min(90vw, 440px);
+  text-align: center;
+  box-sizing: border-box;
   will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+  .wrapper-cta-btn {
+    font-size: clamp(16px, 4.6vw, 22px);
+    padding: 16px 32px;
+    letter-spacing: 0.14em;
+    border-width: 2.5px;
+  }
 }
 
 .wrapper-cta-btn:hover {

@@ -155,10 +155,12 @@ export function CinematicScroll() {
     }
   }, [isWrapperDismissed])
 
-  // Preload wrapper background image so overlay and CTA appear together immediately
+  // Preload wrapper background image (responsive for desktop and mobile) so overlay and CTA appear together immediately
   useEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+    const wrapperSrc = isMobile ? '/iPhone 17 - 1.jpg' : '/Desktop - 1.jpg'
     const wrapperImg = new Image()
-    wrapperImg.src = '/Desktop - 1.jpg'
+    wrapperImg.src = wrapperSrc
     if (wrapperImg.complete) {
       queueMicrotask(() => setIsWrapperImgReady(true))
     } else {
