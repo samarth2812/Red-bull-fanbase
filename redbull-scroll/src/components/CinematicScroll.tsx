@@ -21,6 +21,7 @@ export function CinematicScroll() {
 
   // Wrapper overlay & CTA refs
   const [isWrapperDismissed, setIsWrapperDismissed] = useState<boolean>(false)
+  const [isWrapperImgReady, setIsWrapperImgReady] = useState<boolean>(false)
   const [isCrashing, setIsCrashing] = useState<boolean>(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const ctaBtnRef = useRef<HTMLButtonElement>(null)
@@ -153,6 +154,18 @@ export function CinematicScroll() {
       document.body.style.overflow = ''
     }
   }, [isWrapperDismissed])
+
+  // Preload wrapper background image so overlay and CTA appear together immediately
+  useEffect(() => {
+    const wrapperImg = new Image()
+    wrapperImg.src = '/Desktop - 1.jpg'
+    if (wrapperImg.complete) {
+      queueMicrotask(() => setIsWrapperImgReady(true))
+    } else {
+      wrapperImg.onload = () => setIsWrapperImgReady(true)
+      wrapperImg.onerror = () => setIsWrapperImgReady(true)
+    }
+  }, [])
 
   // Internal state kept in refs to avoid any React re-renders during scroll
   const currentFrameRef = useRef<number>(0)
@@ -542,7 +555,10 @@ export function CinematicScroll() {
 
       {/* Top Fullscreen Wrapper Overlay */}
       {!isWrapperDismissed && (
-        <div ref={wrapperRef} className="wrapper-overlay">
+        <div
+          ref={wrapperRef}
+          className={`wrapper-overlay ${isWrapperImgReady ? 'ready' : 'loading'}`}
+        >
           <button
             ref={ctaBtnRef}
             type="button"

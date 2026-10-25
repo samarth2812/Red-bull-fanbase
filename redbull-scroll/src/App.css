@@ -238,7 +238,7 @@
   }
 }
 
-/* Fullscreen Top Wrapper Overlay (Desktop - 1.png) */
+/* Fullscreen Top Wrapper Overlay (Fast Loading) */
 .wrapper-overlay {
   position: fixed;
   inset: 0;
@@ -249,15 +249,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/Desktop - 1.png');
+  background-image: url('/Desktop - 1.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #0d0e12;
   overflow: hidden;
   perspective: 1000px;
   transform-style: preserve-3d;
   will-change: transform, filter, opacity;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+}
+
+.wrapper-overlay.ready {
+  opacity: 1;
+}
+
+.wrapper-overlay.loading .wrapper-cta-btn {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* CTA Button matching Frame 30.png design */
